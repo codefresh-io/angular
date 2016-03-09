@@ -3,12 +3,12 @@ FROM node:latest
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-RUN npm install -g gulp
-RUN npm install -g protractor
+RUN npm install --silent -g gulp
+RUN npm install --silent -g protractor
 
 COPY package.json .
 COPY npm-shrinkwrap.json node_modules/.npm-shrinkwrap.cached.json
-RUN npm install
+RUN npm install --silent
 
 COPY modules/angular2/tsd.json modules/angular2/tsd.json
 RUN $(npm bin)/tsd reinstall --overwrite --clean --config modules/angular2/tsd.json
